@@ -37,7 +37,7 @@ const Register = () => {
                             <div className="form-control gap-4 mt-4">
                                 <label className="input-group input-group-vertical">
                                     <span>Password</span>
-                                    <input name="password" type="password" placeholder="Password" className="input input-bordered" required />
+                                    <input name="password" type="new-password" placeholder="Password" className="input input-bordered" required />
                                 </label>
                             </div>
                             <div className="card-actions mt-4">

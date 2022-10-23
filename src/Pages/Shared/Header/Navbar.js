@@ -47,7 +47,9 @@ const Navbar = () => {
                         <Link to={'/register'}>
                             <button className="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg btn-outline btn-secondary">Register</button>
                         </Link>
-
+                        <Link to={'/products'}>
+                            <button className="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg btn-outline btn-dark">Products</button>
+                        </Link>
                     </ul>
                 </div>
                 <div className="navbar-end">

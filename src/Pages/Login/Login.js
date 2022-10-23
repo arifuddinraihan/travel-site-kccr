@@ -1,12 +1,15 @@
 import { errorPrefix } from '@firebase/util';
 import { GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider';
 
 const Login = () => {
     const [ error , setError] = useState('')
     const { providerLogin, signIn } = useContext(AuthContext)
+    const navigate = useNavigate()
+    const location = useLocation()
+    const from = location.state?.from?.pathname
 
     const googleProvider = new GoogleAuthProvider()
 
@@ -18,6 +21,7 @@ const Login = () => {
         .then(res => {
             const user = res.user
             console.log(user)
+            navigate(from, { replace: true })
         })
         .catch(e => console.error(e))
     }
@@ -28,15 +32,15 @@ const Login = () => {
         const email = form.email?.value;
         const password = form.password?.value;
         console.log("Yes form is working", email, password)
-
         signIn(email, password)
         .then(result => {
             const user = result.user
-            console.log(user)
+            console.log(user);
+            form.reset();
+            navigate(from, { replace: true })
         })
         .catch(e => {
             console.error(e)
-            console.log(e)
             // setError(e.message)
         })
     }
@@ -84,7 +88,7 @@ const Login = () => {
 
                         <div className="mt-4">
                             <label className="block mb-2 text-sm font-medium text-gray-600 dark:text-gray-200" htmlFor="loggingPassword">Password</label>
-                            <input name="password" id="loggingPassword" className="block w-full px-4 py-2 text-gray-700 bg-white border rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring focus:ring-blue-300" type="password" required />
+                            <input name="password" id="loggingPassword" className="block w-full px-4 py-2 text-gray-700 bg-white border rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring focus:ring-blue-300" type="current-password" required />
                         </div>
                         <span className='text-danger'>{error}</span> 
                         <div className="mt-8">
