@@ -1,7 +1,19 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import { AuthContext } from '../../../Context/AuthProvider';
 
 const Navbar = () => {
+
+    const { user, logOut } = useContext(AuthContext)
+
+    const handleLogOut = () => {
+        console.log("Logout working")
+        logOut()
+            .then(() => { })
+            .catch(error => console.error(error))
+    }
+
     return (
         <div className='container mx-auto'>
             <div className="navbar bg-base-100">
@@ -47,13 +59,19 @@ const Navbar = () => {
                         </label>
                         <ul tabIndex={0} className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52">
                             <li>
-                                <a className="justify-between">
-                                    Profile
-                                    <span className="badge">New</span>
-                                </a>
+                                {
+                                    user?.uid ?
+                                        <>
+                                            <span>{user?.displayName}</span>
+                                            <button onClick={handleLogOut}>Log out</button>
+                                        </>
+                                        :
+                                        <>
+                                            <Link to='/login'>Login</Link>
+                                            <Link to='/register'>Register</Link>
+                                        </>
+                                }
                             </li>
-                            <li><a>Settings</a></li>
-                            <li><a>Logout</a></li>
                         </ul>
                     </div>
                 </div>
