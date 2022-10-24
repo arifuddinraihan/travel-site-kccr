@@ -1,17 +1,18 @@
 import React from 'react';
+import { useLoaderData } from 'react-router-dom';
+import SingleProducts from './SingleProducts';
 
 const Products = () => {
+    const products = useLoaderData()
     return (
-        <div>
-            <div className="hero min-h-screen" style={{ backgroundImage: `url("https://placeimg.com/1000/800/arch")` }}>
-                <div className="hero-overlay bg-opacity-60"></div>
-                <div className="hero-content text-center text-neutral-content">
-                    <div className="max-w-md">
-                        <h1 className="mb-5 text-5xl font-bold">Hello there</h1>
-                        <p className="mb-5">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
-                        <button className="btn btn-primary">Get Started</button>
-                    </div>
-                </div>
+        <div className='container px-6 py-10 mx-auto'>
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 mt-8 xl:mt-12 xl:gap-12">
+                {
+                    products.map(perProduct => <SingleProducts
+                        key={perProduct.id}
+                        perProduct={perProduct}
+                    ></SingleProducts>)
+                }
             </div>
         </div>
     );

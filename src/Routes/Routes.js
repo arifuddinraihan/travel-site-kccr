@@ -25,7 +25,8 @@ export const routes = createBrowserRouter([
                 loader: () => fetch('http://localhost:5000/category')
             },
             {
-                path: '/products',
+                path: '/category/:id',
+                loader: ({params}) => fetch(`http://localhost:5000/category/${params.id}`),
                 element: 
                 <PrivateRoute>
                     <Products></Products>
