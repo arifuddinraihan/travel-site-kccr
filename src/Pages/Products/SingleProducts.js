@@ -4,8 +4,8 @@ const SingleProducts = ({perProduct}) => {
     const { title, price, description, image, rating } = perProduct;
     const { rate, count } = rating;
     return (
-        <div className="flex max-w-md overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800">
-            <div className="w-1/3 bg-transparent bg-center bg-contain bg-no-repeat"
+        <div className="flex max-w-md overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800 text-start">
+            <div className="w-1/3 h-4/5 bg-transparent bg-center bg-contain bg-no-repeat"
                 style={{
                     backgroundImage: `url(${image})`
                 }}></div>

@@ -25,9 +25,9 @@ const Navbar = () => {
                             <Link to={'/category'}>
                                 Category
                             </Link>
-                            {/* <Link to={'/products'}>
-                                Products
-                            </Link> */}
+                            <Link to={'/all-products'}>
+                               All Products
+                            </Link>
                         </ul>
                     </div>
                     <a className="btn btn-ghost normal-case text-xl">daisyUI</a>
@@ -37,9 +37,9 @@ const Navbar = () => {
                         <Link to={'/category'}>
                             <button className="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg btn-outline btn-dark">Category</button>
                         </Link>
-                        {/* <Link to={'/products'}>
-                            <button className="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg btn-outline btn-dark">Products</button>
-                        </Link> */}
+                        <Link to={'/all-products'}>
+                            <button className="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg btn-outline btn-dark">All Products</button>
+                        </Link>
                     </ul>
                 </div>
                 <div className="navbar-end">
