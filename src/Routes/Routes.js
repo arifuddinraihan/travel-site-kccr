@@ -23,11 +23,11 @@ export const routes = createBrowserRouter([
             {
                 path: '/category',
                 element: <Category></Category>,
-                loader: () => fetch('http://localhost:5000/category')
+                loader: () => fetch('https://travel-site-kccr-server.vercel.app/category')
             },
             {
                 path: '/category/:id',
-                loader: ({params}) => fetch(`http://localhost:5000/category/${params.id}`),
+                loader: ({params}) => fetch(`https://travel-site-kccr-server.vercel.app/category/${params.id}`),
                 element: 
                 <PrivateRoute>
                     <Products></Products>
@@ -35,7 +35,7 @@ export const routes = createBrowserRouter([
             },
             {
                 path: '/all-products',
-                loader: () => fetch(`http://localhost:5000/all-products`),
+                loader: () => fetch(`https://travel-site-kccr-server.vercel.app/all-products`),
                 element: 
                 <PrivateRoute>
                     <AllProducts></AllProducts>
